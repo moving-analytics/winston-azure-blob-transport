@@ -1,45 +1,17 @@
 # winston-azure-blob-transport
 
-[![NPM version](https://badge.fury.io/js/winston-azure-blob-transport.png)](http://badge.fury.io/js/winston-azure-blob-transport)
+A winston transport for azure blob storage. Forked from original to address a [security issue in a dependency](https://github.com/advisories/GHSA-cwcx-rxgc-cmw3).
 
-A [Windows Azure][0] blob storage transport for [winston][1].
-
-## Installation
+## Using in Other Projects
 
 ``` bash
-  $ npm install winston
-  $ npm install winston-azure-blob-transport
+$ npm i https://github.com/moving-analytics/winston-azure-blob-transport/raw/master/winston-azure-blob-transport-0.4.1.tgz
 ```
 
-## Usage
-``` js
-  var winston = require("winston");
-  require("winston-azure-blob-transport");
+## Updating this Project
 
-  var logger = new (winston.Logger)({
-    transports: [
-      new (winston.transports.AzureBlob)({
-        account: {
-          name: "Azure storage account sub domain ([A-Za-z0-9])",
-          key: "The long Azure storage secret key"
-        },
-        containerName: "A container name",
-        blobName: "The name of the blob",
-        level: "info"
-      })
-    ]
-  });
-  
-  logger.warn("Hello!");
+``` bash
+$ npm install
+$ npm run prepare
+$ npm pack
 ```
-
-The Azure transport accepts the following options:
-
-* __level:__ Level of messages that this transport should log (defaults to `info`).
-* __account.name:__ The name of the Windows Azure storage account to use
-* __account.key:__ The access key used to authenticate into this storage account
-* __blobName:__ The name of the blob to log.
-* __containerName:__ The container which will contain the logs.
-
-[0]: http://www.windowsazure.com/en-us/develop/nodejs/
-[1]: https://github.com/flatiron/winston
